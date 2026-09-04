@@ -1,0 +1,163 @@
+1
+00:00:05,912 --> 00:00:07,333
+Welcome to PatientVoice
+
+2
+00:00:07,333 --> 00:00:12,089
+an ambient clinical agent designed to prevent hospital readmissions following
+
+3
+00:00:12,089 --> 00:00:13,695
+joint replacement surgery.
+
+4
+00:00:13,695 --> 00:00:17,958
+Over two million patients undergo hip and knee arthroplasty each year
+
+5
+00:00:17,958 --> 00:00:22,714
+yet post-discharge complications often go undetected until patients arrive in
+
+6
+00:00:22,714 --> 00:00:23,888
+the Emergency Room.
+
+7
+00:00:29,047 --> 00:00:31,361
+Let's explore the Patient Interface
+
+8
+00:00:31,361 --> 00:00:35,263
+designed for zero-friction daily voice and wound check-ins.
+
+9
+00:00:37,563 --> 00:00:40,602
+Patients simply speak for under 90 seconds.
+
+10
+00:00:40,602 --> 00:00:47,032
+The Web Speech API transcribes speech in real time with a live harmonic waveform visualizer
+
+11
+00:00:47,032 --> 00:00:51,060
+automatically extracting pain scores, ambulation distance
+
+12
+00:00:51,060 --> 00:00:52,827
+and medication adherence.
+
+13
+00:00:57,977 --> 00:01:01,602
+Patients take a daily photo of their surgical incision.
+
+14
+00:01:01,602 --> 00:01:05,227
+Our computer vision engine analyzes the erythema margin
+
+15
+00:01:05,227 --> 00:01:07,007
+checks staple approximation
+
+16
+00:01:07,007 --> 00:01:11,489
+and detects purulent drainage compared against their Day 0 baseline.
+
+17
+00:01:17,384 --> 00:01:21,887
+Crucially, PatientVoice incorporates deterministic clinical guardrails.
+
+18
+00:01:21,887 --> 00:01:27,532
+When a patient reports critical symptoms like acute calf swelling indicating a blood clot
+
+19
+00:01:27,532 --> 00:01:32,098
+the system instantly bypasses generative chat and activates an emergency
+
+20
+00:01:32,098 --> 00:01:34,952
+red-line protocol with one-touch 911 dialing.
+
+21
+00:01:44,347 --> 00:01:47,176
+Now let's switch to the Clinician Triage Hub
+
+22
+00:01:47,176 --> 00:01:52,321
+where on-call orthopedic nurses and surgical fellows manage their active patient
+
+23
+00:01:52,321 --> 00:01:52,771
+cohort.
+
+24
+00:01:55,973 --> 00:01:58,652
+Patients are sorted by urgency priority.
+
+25
+00:01:58,652 --> 00:02:03,743
+Clinicians can inspect side-by-side and interactive split-slider wound diffs
+
+26
+00:02:03,743 --> 00:02:09,034
+comparing Day 0 In-OR baseline photos with today's capture to quantify erythema
+
+27
+00:02:09,034 --> 00:02:10,709
+expansion in millimeters.
+
+28
+00:02:18,855 --> 00:02:22,953
+The hub visualizes multi-day pain and mobility biomarker curves
+
+29
+00:02:22,953 --> 00:02:26,596
+automatically synthesizes structured SBAR clinical notes
+
+30
+00:02:26,596 --> 00:02:31,605
+and provides one-click order dispatch to dispatch home health nurses or order
+
+31
+00:02:31,605 --> 00:02:33,231
+STAT Doppler ultrasounds.
+
+32
+00:02:41,188 --> 00:02:45,383
+PatientVoice is built for real-world healthcare interoperability
+
+33
+00:02:45,383 --> 00:02:50,365
+generating validated HL7 FHIR Release 4 ClinicalImpression bundles mapped to
+
+34
+00:02:50,365 --> 00:02:55,084
+SNOMED CT and LOINC ontologies for seamless Epic and Cerner integration.
+
+35
+00:03:04,202 --> 00:03:06,067
+On the Emergency Rules page
+
+36
+00:03:06,067 --> 00:03:12,700
+clinicians and judges can interactively test the deterministic safety matrix across DVT symptoms
+
+37
+00:03:12,700 --> 00:03:17,882
+pyrexia thresholds, and wound dehiscence to verify zero hallucination risk.
+
+38
+00:03:23,617 --> 00:03:27,300
+PatientVoice bridges the post-discharge surveillance gap
+
+39
+00:03:27,300 --> 00:03:31,444
+protecting orthopedic patients, streamlining clinical workflows
+
+40
+00:03:31,444 --> 00:03:36,639
+and saving healthcare systems thousands of dollars in preventable readmissions.
+
+41
+00:03:36,639 --> 00:03:37,297
+Thank you.

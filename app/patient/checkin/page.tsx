@@ -563,7 +563,7 @@ export default function PatientCheckInPage() {
       </div>
 
       {/* Emergency Red-Line Modal Takeover */}
-      {submittedCheckIn && (
+      {submittedCheckIn && showEmergencyModal && (
         <EmergencyRedLineModal
           guardrails={submittedCheckIn.guardrails}
           patientName={selectedPatient.name}

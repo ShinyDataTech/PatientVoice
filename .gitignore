@@ -36,3 +36,5 @@ next-env.d.ts
 *.pdf
 implementation_plan.md
 /submission/
+.frames/
+demo/**/.frames/

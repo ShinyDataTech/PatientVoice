@@ -1,0 +1,245 @@
+titleCard:
+  title: "PatientVoice"
+  subtitle: "Ambient Post-Op Recovery & Symptom Escalation Assistant"
+  duration: 3500
+app:
+  url: "http://localhost:3001"
+  viewport:
+    width: 1920
+    height: 1080
+  scale: 2
+  zoom: 1
+  colorScheme: "dark"
+  setup:
+    - run: "node -e \"fetch('http://localhost:3001/api/clinician/patients', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({action:'reset'})})\""
+tts:
+  provider: "edge"
+  voice: "en-US-JennyNeural"
+  speed: 1
+recording:
+  outputDir: "."
+  fps: 30
+segments:
+  - id: "intro-home"
+    narration: "Welcome to PatientVoice, an ambient clinical agent designed to prevent hospital readmissions following joint replacement surgery. Over two million patients undergo hip and knee arthroplasty each year, yet post-discharge complications often go undetected until patients arrive in the Emergency Room."
+    intent: "Showcase the home landing page and the post-op recovery challenge"
+    actions:
+      - type: "wait"
+        duration: 1500
+      - type: "scroll"
+        target:
+          selector: "h2:has-text('Interactive Clinical Sandbox')"
+      - type: "wait"
+        duration: 2500
+      - type: "scroll"
+        target:
+          selector: "h1"
+      - type: "wait"
+        duration: 1000
+    timing: "after"
+    audioDuration: 17976
+    videoDuration: 23135
+  - id: "nav-to-patient"
+    narration: "Let's explore the Patient Interface, designed for zero-friction daily voice and wound check-ins."
+    intent: "Click launch patient check-in button"
+    actions:
+      - type: "click"
+        target:
+          role: "link"
+          name: "Launch Patient Check-In"
+        done:
+          url: "**/patient/checkin"
+      - type: "wait"
+        duration: 1500
+    timing: "after"
+    audioDuration: 6216
+    videoDuration: 8516
+  - id: "patient-voice-checkin"
+    narration: "Patients simply speak for under 90 seconds. The Web Speech API transcribes speech in real time with a live harmonic waveform visualizer, automatically extracting pain scores, ambulation distance, and medication adherence."
+    intent: "Demonstrate voice recording and preset scenario selection"
+    actions:
+      - type: "click"
+        target:
+          selector: "button:has-text('1. Normal Recovery')"
+      - type: "wait"
+        duration: 2000
+      - type: "scroll"
+        target:
+          selector: "textarea"
+      - type: "wait"
+        duration: 2000
+    timing: "after"
+    audioDuration: 15264
+    videoDuration: 20414
+  - id: "wound-vision-scan"
+    narration: "Patients take a daily photo of their surgical incision. Our computer vision engine analyzes the erythema margin, checks staple approximation, and detects purulent drainage compared against their Day 0 baseline."
+    intent: "Run incision computer vision scan on wound photo"
+    actions:
+      - type: "click"
+        target:
+          selector: "button:has-text('Erythema / SSI')"
+      - type: "wait"
+        duration: 1000
+      - type: "click"
+        target:
+          selector: "button:has-text('Run Incision Computer Vision Analysis')"
+      - type: "wait"
+        duration: 3500
+    timing: "after"
+    audioDuration: 13512
+    videoDuration: 19407
+  - id: "emergency-guardrail-dvt"
+    narration: "Crucially, PatientVoice incorporates deterministic clinical guardrails. When a patient reports critical symptoms like acute calf swelling indicating a blood clot, the system instantly bypasses generative chat and activates an emergency red-line protocol with one-touch 911 dialing."
+    intent: "Trigger DVT emergency red-line scenario and show emergency modal"
+    actions:
+      - type: "scroll"
+        target:
+          selector: "button:has-text('3. DVT / PE Alert')"
+      - type: "click"
+        target:
+          selector: "button:has-text('3. DVT / PE Alert')"
+      - type: "wait"
+        duration: 1500
+      - type: "click"
+        target:
+          selector: "button:has-text('Submit Daily Check-In to Surgical Team')"
+        done:
+          visible: "h2:has-text('Critical Clinical Escalation Triggered'), h2:has-text('Suspected Deep Vein Thrombosis'), h2:has-text('Suspected Pulmonary Embolism')"
+      - type: "wait"
+        duration: 4000
+      - type: "click"
+        target:
+          selector: "button:has-text('Acknowledge and View Clinical Summary')"
+        done:
+          hidden: "h2:has-text('Critical Clinical Escalation Triggered')"
+      - type: "wait"
+        duration: 1500
+    timing: "after"
+    audioDuration: 17568
+    videoDuration: 26963
+  - id: "nav-to-clinician"
+    narration: "Now let's switch to the Clinician Triage Hub, where on-call orthopedic nurses and surgical fellows manage their active patient cohort."
+    intent: "Navigate to clinician triage hub"
+    actions:
+      - type: "click"
+        target:
+          role: "link"
+          name: "Clinician Hub"
+        done:
+          url: "**/clinician"
+      - type: "wait"
+        duration: 2000
+    timing: "after"
+    audioDuration: 8424
+    videoDuration: 11626
+  - id: "clinician-wound-diff"
+    narration: "Patients are sorted by urgency priority. Clinicians can inspect side-by-side and interactive split-slider wound diffs, comparing Day 0 In-OR baseline photos with today's capture to quantify erythema expansion in millimeters."
+    intent: "Select Marcus Sterling and demonstrate interactive wound diff slider"
+    actions:
+      - type: "click"
+        target:
+          selector: "button:has-text('Marcus Sterling')"
+      - type: "wait"
+        duration: 2000
+      - type: "click"
+        target:
+          selector: "button:has-text('Interactive Slider')"
+      - type: "wait"
+        duration: 2500
+      - type: "click"
+        target:
+          selector: "button:has-text('Side-by-Side')"
+      - type: "wait"
+        duration: 1500
+    timing: "after"
+    audioDuration: 14736
+    videoDuration: 22882
+  - id: "clinician-actions-sbar"
+    narration: "The hub visualizes multi-day pain and mobility biomarker curves, automatically synthesizes structured SBAR clinical notes, and provides one-click order dispatch to dispatch home health nurses or order STAT Doppler ultrasounds."
+    intent: "Scroll to biomarkers, copy SBAR note, and execute clinical order"
+    actions:
+      - type: "scroll"
+        target:
+          selector: "h3:has-text('Pre-Drafted SBAR Clinical Escalation Note')"
+      - type: "wait"
+        duration: 2000
+      - type: "click"
+        target:
+          selector: "button:has-text('Copy SBAR')"
+      - type: "wait"
+        duration: 1500
+      - type: "click"
+        target:
+          selector: "button:has-text('Dispatch Home Health RN')"
+      - type: "wait"
+        duration: 3000
+    timing: "after"
+    audioDuration: 14376
+    videoDuration: 22333
+  - id: "fhir-interoperability"
+    narration: "PatientVoice is built for real-world healthcare interoperability, generating validated HL7 FHIR Release 4 ClinicalImpression bundles mapped to SNOMED CT and LOINC ontologies for seamless Epic and Cerner integration."
+    intent: "Open and display the FHIR R4 JSON modal"
+    actions:
+      - type: "scroll"
+        target:
+          selector: "button:has-text('Export FHIR R4 Bundle')"
+      - type: "click"
+        target:
+          selector: "button:has-text('Export FHIR R4 Bundle')"
+        done:
+          visible: "h3:has-text('HL7® FHIR® R4 Clinical Resource Payload')"
+      - type: "wait"
+        duration: 4000
+      - type: "click"
+        target:
+          selector: "button:has-text('Copy JSON')"
+      - type: "wait"
+        duration: 1500
+      - type: "click"
+        target:
+          selector: "button:has(svg.lucide-x)"
+        done:
+          hidden: "h3:has-text('HL7® FHIR® R4 Clinical Resource Payload')"
+      - type: "wait"
+        duration: 1500
+    timing: "after"
+    audioDuration: 13896
+    videoDuration: 23014
+  - id: "guardrail-matrix-sandbox"
+    narration: "On the Emergency Rules page, clinicians and judges can interactively test the deterministic safety matrix across DVT symptoms, pyrexia thresholds, and wound dehiscence to verify zero hallucination risk."
+    intent: "Navigate to guardrails matrix and demonstrate parameter toggles"
+    actions:
+      - type: "click"
+        target:
+          role: "link"
+          name: "Emergency Rules"
+        done:
+          url: "**/guardrails"
+      - type: "wait"
+        duration: 2000
+      - type: "click"
+        target:
+          selector: "button:has-text('POSITIVE (DVT Risk)'), button:has-text('NEGATIVE')"
+      - type: "wait"
+        duration: 2000
+    timing: "after"
+    audioDuration: 13680
+    videoDuration: 19415
+  - id: "conclusion"
+    narration: "PatientVoice bridges the post-discharge surveillance gap, protecting orthopedic patients, streamlining clinical workflows, and saving healthcare systems thousands of dollars in preventable readmissions. Thank you."
+    intent: "Navigate back home and conclude presentation"
+    actions:
+      - type: "click"
+        target:
+          role: "link"
+          name: "PatientVoice"
+        done:
+          url: "http://localhost:3001/"
+      - type: "scroll"
+        target:
+          selector: "h2:has-text('Real-World Clinical Impact')"
+      - type: "wait"
+        duration: 4000
+    timing: "after"
+    audioDuration: 13680
+    videoDuration: 18452
