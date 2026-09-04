@@ -23,13 +23,13 @@ PatientVoice closes this gap through:
 
 ```mermaid
 graph TD
-    subgraph Patient Web Client ["Patient Web Client (WCAG AAA)"]
-        VoiceInput["Web Speech / Audio Stream"]
-        WoundPhoto["Camera / Incision Dropzone"]
-        A11y["High-Contrast & Audio Guidance"]
+    subgraph ClientLayer ["Patient Web Client (WCAG AAA)"]
+        VoiceInput["Web Speech Audio Stream"]
+        WoundPhoto["Camera Incision Dropzone"]
+        PatientAlert["Emergency Takeover Modal"]
     end
 
-    subgraph Multimodal Engine ["Multimodal AI & Guardrail Core"]
+    subgraph MultimodalCore ["Multimodal AI & Guardrail Core"]
         SpeechParser["Voice Transcript & Entity Extractor"]
         VisionAnalyzer["Wound Margin & Erythema CV Engine"]
         Guardrails{"Deterministic Clinical Guardrails"}
@@ -37,15 +37,15 @@ graph TD
         SBARGen["Automated SBAR Synthesis Engine"]
     end
 
-    subgraph Clinician Hub ["Clinician Triage Command Center"]
+    subgraph ClinicianHub ["Clinician Triage Command Center"]
         PriorityQueue["Urgency Triage Queue (Critical / Moderate / Stable)"]
         WoundDiff["Side-by-Side Wound Visual Diff Viewer"]
         Biomarkers["Longitudinal Recovery Trends (Pain, Ambulation, Temp)"]
         OneClickOrders["1-Click Clinical Order Dispatch"]
-        FHIRExporter["HL7® FHIR® R4 Bundle Generator"]
+        FHIRExporter["HL7 FHIR R4 Bundle Generator"]
     end
 
-    subgraph Health IT Systems ["Hospital & EHR Infrastructure"]
+    subgraph HospitalInfra ["Hospital & EHR Infrastructure"]
         EpicCerner["Epic / Cerner EMR (SMART on FHIR)"]
         OnCallFellow["On-Call Orthopedic Fellow Pager"]
         HomeHealth["Home Health Nursing Dispatch"]
@@ -57,7 +57,7 @@ graph TD
     VisionAnalyzer --> Guardrails
 
     Guardrails -->|Critical Red-Line Met| EmergencyBypass
-    EmergencyBypass --> Patient Web Client
+    EmergencyBypass --> PatientAlert
     EmergencyBypass --> OnCallFellow
 
     Guardrails -->|Standard / Moderate Trajectory| SBARGen
