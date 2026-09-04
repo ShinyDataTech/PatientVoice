@@ -9,6 +9,11 @@
 
 ---
 
+## 🏷️ Built With (Devpost Tags — Max 25)
+`next.js`, `react`, `typescript`, `node.js`, `tailwind-css`, `web-speech-api`, `web-audio-api`, `html5-canvas`, `computer-vision`, `image-processing`, `clinical-decision-support`, `clinical-nlp`, `hl7-fhir`, `fhir-r4`, `loinc`, `snomed-ct`, `healthcare-ai`, `ambient-ai`, `telehealth`, `deterministic-guardrails`, `edge-tts`, `ffmpeg`, `playwright`, `rest-api`, `hipaa-compliance`
+
+---
+
 ## 💡 Inspiration
 Over **51 million surgical procedures** are performed in the United States every year. Following hospital discharge, patients enter the most vulnerable window of their recovery journey: the first 30 days.
 
