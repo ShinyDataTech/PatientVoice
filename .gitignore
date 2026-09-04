@@ -35,6 +35,5 @@ next-env.d.ts
 # unwanted files
 *.pdf
 implementation_plan.md
-/submission/
 .frames/
 demo/**/.frames/
