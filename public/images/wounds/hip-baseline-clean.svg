@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="100%" height="100%">
+  <defs>
+    <radialGradient id="hipSkin" cx="40%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#f5ceb0"/>
+      <stop offset="75%" stop-color="#e8bd9b"/>
+      <stop offset="100%" stop-color="#d6a986"/>
+    </radialGradient>
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <rect width="600" height="600" fill="url(#hipSkin)"/>
+
+  <!-- Greater Trochanter Anatomical Contour -->
+  <ellipse cx="260" cy="310" rx="140" ry="180" fill="#e2af89" opacity="0.3"/>
+
+  <!-- Mild Baseline Incision Erythema (Normal <4mm) -->
+  <path d="M 230,150 Q 280,300 240,460" stroke="#de7373" stroke-width="16" stroke-linecap="round" opacity="0.3" filter="url(#softGlow)"/>
+
+  <!-- Clean Curved Posterolateral THA Incision Line -->
+  <path d="M 230,150 Q 280,300 240,460" stroke="#752222" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Subcuticular Adhesive Closure Mesh / Steri-Strips -->
+  <g stroke="#ffffff" stroke-width="6" stroke-linecap="round" opacity="0.75">
+    <line x1="205" y1="180" x2="255" y2="175" />
+    <line x1="220" y1="220" x2="270" y2="215" />
+    <line x1="235" y1="260" x2="285" y2="255" />
+    <line x1="245" y1="300" x2="295" y2="295" />
+    <line x1="242" y1="340" x2="292" y2="335" />
+    <line x1="230" y1="380" x2="280" y2="375" />
+    <line x1="215" y1="420" x2="265" y2="415" />
+  </g>
+
+  <!-- Clean Baseline Status Badge -->
+  <g transform="translate(30, 30)">
+    <rect width="180" height="34" rx="6" fill="#065f46" opacity="0.9"/>
+    <text x="12" y="22" fill="#ecfdf5" font-family="Arial, sans-serif" font-size="12" font-weight="bold">BASELINE: DAY 0 INTACT</text>
+  </g>
+</svg>

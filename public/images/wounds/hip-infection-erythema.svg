@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="100%" height="100%">
+  <defs>
+    <radialGradient id="hipSkinInf" cx="40%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#f5ceb0"/>
+      <stop offset="75%" stop-color="#e8bd9b"/>
+      <stop offset="100%" stop-color="#d6a986"/>
+    </radialGradient>
+    <!-- Severe Erythema Inflammatory Gradient -->
+    <radialGradient id="infectionHalo" cx="45%" cy="52%" r="45%">
+      <stop offset="0%" stop-color="#dc2626" stop-opacity="0.85"/>
+      <stop offset="45%" stop-color="#ef4444" stop-opacity="0.6"/>
+      <stop offset="75%" stop-color="#f87171" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#ef4444" stop-opacity="0.0"/>
+    </radialGradient>
+    <filter id="blurryHeatmap" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="16" result="blur"/>
+    </filter>
+  </defs>
+
+  <rect width="600" height="600" fill="url(#hipSkinInf)"/>
+
+  <!-- Spreading Circumferential Erythema (28mm Margin Heatmap) -->
+  <path d="M 230,120 Q 320,300 240,490" stroke="url(#infectionHalo)" stroke-width="120" stroke-linecap="round" filter="url(#blurryHeatmap)"/>
+  
+  <!-- Outer AI Detected Erythema Boundary Ring (Dotted Marker) -->
+  <path d="M 170,140 Q 360,300 180,470" stroke="#b91c1c" stroke-width="2" stroke-dasharray="6,4" fill="none" opacity="0.8"/>
+
+  <!-- Incision Separation / Dehiscence Area (Inferior Pole) -->
+  <path d="M 230,150 Q 280,300 240,460" stroke="#991b1b" stroke-width="5" stroke-linecap="round"/>
+  <!-- Local edge gaping -->
+  <ellipse cx="258" cy="340" rx="4" ry="16" fill="#7f1d1d" transform="rotate(-15 258 340)"/>
+
+  <!-- Purulent Exudate Droplets (Yellowish / Cloudy Serosanguinous) -->
+  <g fill="#fbbf24" stroke="#d97706" stroke-width="1">
+    <ellipse cx="262" cy="345" rx="5" ry="8" opacity="0.9"/>
+    <ellipse cx="258" cy="365" rx="4" ry="6" opacity="0.85"/>
+    <ellipse cx="254" cy="385" rx="3.5" ry="5" opacity="0.75"/>
+  </g>
+
+  <!-- Steri-Strips (Lifting at infected margin) -->
+  <g stroke="#ffffff" stroke-width="5" stroke-linecap="round" opacity="0.6">
+    <line x1="205" y1="180" x2="255" y2="175" />
+    <line x1="220" y1="220" x2="270" y2="215" />
+    <line x1="235" y1="260" x2="285" y2="255" />
+    <!-- Dislodged strip -->
+    <line x1="240" y1="310" x2="290" y2="295" stroke="#fef08a" stroke-width="4" opacity="0.9"/>
+    <line x1="225" y1="410" x2="275" y2="405" />
+  </g>
+
+  <!-- Metric Measurement Overlay Annotation -->
+  <g transform="translate(320, 240)">
+    <rect width="240" height="90" rx="8" fill="#1e1b4b" opacity="0.92"/>
+    <text x="14" y="24" fill="#f87171" font-family="Arial, sans-serif" font-size="12" font-weight="bold">AI VISION DETECTION</text>
+    <text x="14" y="46" fill="#ffffff" font-family="Arial, sans-serif" font-size="11">Erythema: 28mm (Δ +24mm)</text>
+    <text x="14" y="64" fill="#fbbf24" font-family="Arial, sans-serif" font-size="11">Purulent Exudate: DETECTED</text>
+    <text x="14" y="80" fill="#f87171" font-family="Arial, sans-serif" font-size="11">Dehiscence: 1.8mm at Pole</text>
+  </g>
+
+  <!-- Status Warning Badge -->
+  <g transform="translate(30, 30)">
+    <rect width="220" height="34" rx="6" fill="#b91c1c" opacity="0.95"/>
+    <text x="12" y="22" fill="#fef2f2" font-family="Arial, sans-serif" font-size="12" font-weight="bold">DAY 4: EXPANDING ERYTHEMA</text>
+  </g>
+</svg>
